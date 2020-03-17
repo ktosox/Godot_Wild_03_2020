@@ -34,15 +34,88 @@ __meta__ = {
 [node name="ScratchSlot" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -1.0
-margin_top = -1.0
-margin_right = 59.0
-margin_bottom = 59.0
+margin_right = 60.0
+margin_bottom = 60.0
 
 [node name="ScratchSlot2" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 63.0
-margin_top = -1.0
-margin_right = 123.0
-margin_bottom = 59.0
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 60.0
+
+[node name="ScratchSlot3" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_right = 188.0
+margin_bottom = 60.0
+
+[node name="ScratchSlot6" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_right = 252.0
+margin_bottom = 60.0
+
+[node name="ScratchSlot5" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 124.0
+
+[node name="ScratchSlot4" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 124.0
+margin_bottom = 124.0
+
+[node name="ScratchSlot12" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 188.0
+margin_bottom = 124.0
+
+[node name="ScratchSlot11" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 252.0
+margin_bottom = 124.0
+
+[node name="ScratchSlot10" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 128.0
+margin_right = 60.0
+margin_bottom = 188.0
+
+[node name="ScratchSlot9" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 124.0
+margin_bottom = 188.0
+
+[node name="ScratchSlot8" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 188.0
+margin_bottom = 188.0
+
+[node name="ScratchSlot7" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_top = 128.0
+margin_right = 252.0
+margin_bottom = 188.0

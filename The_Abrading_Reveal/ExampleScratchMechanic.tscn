@@ -1,9 +1,62 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Resources/scratch_bar.png" type="Texture" id=1]
+[ext_resource path="res://Resources/scratch_texture.png" type="Texture" id=2]
+[ext_resource path="res://ExampleScratchMechanic.gd" type="Script" id=3]
+[ext_resource path="res://Bar.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "scratch"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:mouse_filter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="ExampleScratchMechanic" type="Node2D"]
+script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 99.891, 57.4757 )
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 200.0
+margin_bottom = 60.0
+mouse_filter = 1
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="TextureRect" parent="."]
+margin_right = 26.0
+margin_bottom = 60.0
+mouse_filter = 0
 texture = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animator" type="AnimationPlayer" parent="Bar"]
+playback_speed = 20.0
+anims/scratch = SubResource( 1 )
+[connection signal="mouse_entered" from="Bar" to="Bar" method="_on_Bar_mouse_entered"]
+[connection signal="mouse_exited" from="Bar" to="Bar" method="_on_Bar_mouse_exited"]

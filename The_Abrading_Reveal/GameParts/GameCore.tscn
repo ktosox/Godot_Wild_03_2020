@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameParts/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameParts/GameCore.gd" type="Script" id=2]
+[ext_resource path="res://GameParts/Navigation.tscn" type="PackedScene" id=3]
+
+[node name="GameCore" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Navigation" parent="." instance=ExtResource( 3 )]
+position = Vector2( -2.15857, -2.15845 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]

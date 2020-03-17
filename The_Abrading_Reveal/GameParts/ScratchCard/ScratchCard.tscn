@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameParts/ScratchCard/ScratchSlot.tscn" type="PackedScene" id=1]
+
+[node name="ScratchCard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.70642
+margin_right = 1.70642
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 395.0
+margin_top = 124.0
+margin_right = 679.0
+margin_bottom = 365.0
+mouse_filter = 1
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScratchSlot" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 59.0
+margin_bottom = 59.0
+
+[node name="ScratchSlot2" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 63.0
+margin_top = -1.0
+margin_right = 123.0
+margin_bottom = 59.0

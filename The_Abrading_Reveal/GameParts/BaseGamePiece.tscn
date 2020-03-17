@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GameParts/BaseGamePiece.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Slow"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mover:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Mover:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 2, 1, 2, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0, 0.0, -5.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Mover/icon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -60 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Stop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mover:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 2 ),
+"update": 3,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Mover:v_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Mover/icon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 2 ),
+"update": 3,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="BaseGamePiece" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Mover" type="PathFollow2D" parent="."]
+position = Vector2( 0.632294, 0.670059 )
+rotate = false
+loop = false
+
+[node name="icon" type="Sprite" parent="Mover"]
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="Mover"]
+current = true
+smoothing_enabled = true
+
+[node name="AniamteJump" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Slow = SubResource( 2 )
+anims/Stop = SubResource( 3 )

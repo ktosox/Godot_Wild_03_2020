@@ -45,7 +45,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 2, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -60 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -25 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -105,6 +105,6 @@ current = true
 smoothing_enabled = true
 
 [node name="AniamteJump" type="AnimationPlayer" parent="."]
-playback_speed = 2.0
+playback_speed = 2.6
 anims/Slow = SubResource( 2 )
 anims/Stop = SubResource( 3 )

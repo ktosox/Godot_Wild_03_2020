@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Billliards_Pool_Sports_Sport_applying_rubbing_squeaking_chalk_to_Cue_Stick_18.wav-ff57a0dea1b67a6453d8451c808ec394.sample"
+
+[deps]
+
+source_file="res://Resources/Sounds/Billliards_Pool_Sports_Sport_applying_rubbing_squeaking_chalk_to_Cue_Stick_18.wav"
+dest_files=[ "res://.import/Billliards_Pool_Sports_Sport_applying_rubbing_squeaking_chalk_to_Cue_Stick_18.wav-ff57a0dea1b67a6453d8451c808ec394.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

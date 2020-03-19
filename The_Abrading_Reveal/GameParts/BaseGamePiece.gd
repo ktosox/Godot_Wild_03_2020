@@ -19,6 +19,8 @@ func _ready():
 func move(path):
 	if(blockInput):
 		return
+	if(path.size()==0):
+		return
 	curve.clear_points()
 	$Mover.offset = 0
 	for x in range(path.size()):

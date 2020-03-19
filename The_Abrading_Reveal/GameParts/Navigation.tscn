@@ -1,11 +1,3 @@
-[gd_scene load_steps=2 format=2]
-
-[sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 347.884, 342.718, -164.439, 271.856, 135.298, 209.139, 100.78, -76.3163, 488.793, -138.654, 261.444, -8.72638, 365.599, 192.935, 492.051, 275.929, 386.98, 273.485, 648.147, -77.4243, 743.438, 139.75, 598.286, 45.5671, -329.784, -118.292, 3.3486, -162.275, -171.77, -10.7769, -232.043, 56.827, 240.37, 142.35, 403.27, 73.1171 )
-polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 7, 8 ), PoolIntArray( 9, 10, 11 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 15, 12, 14, 2 ), PoolIntArray( 16, 3, 5, 17, 6 ), PoolIntArray( 17, 9, 11, 6 ), PoolIntArray( 0, 2, 14, 16, 6, 8 ) ]
-outlines = [ PoolVector2Array( -232.043, 56.827, 135.298, 209.139, -164.439, 271.856, 347.884, 342.718, 386.98, 273.485, 492.051, 275.929, 365.599, 192.935, 598.286, 45.5671, 743.438, 139.75, 648.147, -77.4243, 403.27, 73.1171, 261.444, -8.72638, 488.793, -138.654, 100.78, -76.3163, 240.37, 142.35, -171.77, -10.7769, 3.3486, -162.275, -329.784, -118.292 ) ]
+[gd_scene format=2]
 
 [node name="Navigation" type="Navigation2D"]
-
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-navpoly = SubResource( 1 )

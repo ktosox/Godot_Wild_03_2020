@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameParts/GameCore.gd" type="Script" id=1]
+[ext_resource path="res://GameParts/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameParts/BaseTileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameParts/Navigation.tscn" type="PackedScene" id=4]
+
+[node name="GameCore" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Navigation" parent="." instance=ExtResource( 4 )]
+position = Vector2( -2.15857, -2.15845 )
+
+[node name="BaseTileMap" parent="Navigation" instance=ExtResource( 3 )]
+tile_data = PoolIntArray( -5, 2, 65537, -4, 2, 0, 65531, 2, 65537, 131067, 2, 65537, 196603, 2, 65537, 196604, 2, 0, 262141, 2, 0, 327686, 2, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]

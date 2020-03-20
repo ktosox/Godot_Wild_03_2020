@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=12 format=2]
+[gd_resource type="TileSet" load_steps=14 format=2]
 
 [ext_resource path="res://Resources/Tiles/test_door1.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Tiles/test_philar.png" type="Texture" id=2]
@@ -7,6 +7,14 @@
 [ext_resource path="res://Resources/Tiles/traps.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Tiles/crate.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Tiles/barrel.png" type="Texture" id=7]
+
+[sub_resource type="NavigationPolygon" id=5]
+vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=6]
+vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
@@ -75,6 +83,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
+6/navigation = SubResource( 5 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 6/shape_one_way = false
@@ -89,6 +98,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
+7/navigation = SubResource( 6 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -132,7 +142,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 9/z_index = 0
 10/name = "CRATE"
 10/texture = ExtResource( 6 )
-10/tex_offset = Vector2( 0, 0 )
+10/tex_offset = Vector2( 0, -40 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 64, 80 )
 10/tile_mode = 0

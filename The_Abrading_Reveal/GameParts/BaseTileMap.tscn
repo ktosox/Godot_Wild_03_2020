@@ -7,4 +7,3 @@ mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 64, 40 )
 format = 1
-tile_data = PoolIntArray( 6, 9, 0 )

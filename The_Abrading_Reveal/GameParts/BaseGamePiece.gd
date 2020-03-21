@@ -4,7 +4,7 @@ extends Path2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var speed = 160
+export var speed = 100
 var moving = false
 var blockInput = false
 
@@ -28,7 +28,10 @@ func move(path):
 	moving = true
 	pass
 
-
+func setCamera():
+	$Mover/Camera2D.current = true
+	GM.currentCamera = $Mover/Camera2D
+	pass
 
 func _physics_process(delta):
 	if(moving):
@@ -38,6 +41,24 @@ func _physics_process(delta):
 		if($Mover.unit_offset>=1):
 			moving = false
 			$AniamteJump.play("Stop")
+
+func change_speed(newSpeed:float):
+	print("before",$AniamteJump.playback_speed)
+	$AniamteJump.playback_speed *= (newSpeed/speed)
+	speed = newSpeed
+	print("after",$AniamteJump.playback_speed)
+	
+	pass
+
+func change_sprite(type:int): 
+	#change Body-s texture to the selected spritesheet
+	match type:
+		0:
+			pass
+		1:
+			pass
+		2:
+			pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

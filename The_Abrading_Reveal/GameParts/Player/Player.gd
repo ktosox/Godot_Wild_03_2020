@@ -7,10 +7,12 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentPlayer = self
+	$BaseGamePiece.setCamera()
 	#GM.currentCamera = $Path2D/PathFollow2D/Camera2D
 	pass # Replace with function body.
 
-
+func get_real_pos():
+	return $BaseGamePiece/Mover.global_position
 		
 func move(path):
 	$BaseGamePiece.move(path)

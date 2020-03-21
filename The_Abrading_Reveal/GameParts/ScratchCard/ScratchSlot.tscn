@@ -1,8 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/scratch.png" type="Texture" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://GameParts/ScratchCard/ScratchSlot.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Sounds/Billliards_Pool_Sports_Sport_applying_rubbing_squeaking_chalk_to_Cue_Stick_18.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Short"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, -2, 1 ),
+"update": 0,
+"values": [ -20.0, 0.0, -60.0 ]
+}
 
 [node name="ScratchSlot" type="Control"]
 anchor_right = 1.0
@@ -50,4 +81,12 @@ color = Color( 0.643137, 0.643137, 0.643137, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
+pitch_scale = 1.4
+
+[node name="Alter" type="AnimationPlayer" parent="SoundEffect"]
+anims/Short = SubResource( 1 )
 [connection signal="gui_input" from="." to="." method="_on_ScratchSlot_gui_input"]

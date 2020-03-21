@@ -8,14 +8,6 @@
 [ext_resource path="res://Resources/Tiles/crate.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Tiles/barrel.png" type="Texture" id=7]
 
-[sub_resource type="NavigationPolygon" id=5]
-vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
-[sub_resource type="NavigationPolygon" id=6]
-vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
@@ -29,6 +21,14 @@ vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="NavigationPolygon" id=4]
+vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=5]
+vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=6]
 vertices = PoolVector2Array( 32, 0, 0, 20, 32, 40, 64, 20 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
@@ -83,7 +83,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
-6/navigation = SubResource( 5 )
+6/navigation = SubResource( 1 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 6/shape_one_way = false
@@ -98,7 +98,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/navigation = SubResource( 6 )
+7/navigation = SubResource( 2 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 7/shape_one_way = false
@@ -115,7 +115,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 8/autotile/tile_size = Vector2( 64, 40 )
 8/autotile/spacing = 0
 8/autotile/occluder_map = [  ]
-8/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 2 ), Vector2( 1, 0 ), SubResource( 3 ), Vector2( 1, 1 ), SubResource( 4 ) ]
+8/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 3 ), Vector2( 0, 1 ), SubResource( 4 ), Vector2( 1, 0 ), SubResource( 5 ), Vector2( 1, 1 ), SubResource( 6 ) ]
 8/autotile/priority_map = [  ]
 8/autotile/z_index_map = [  ]
 8/occluder_offset = Vector2( 0, 0 )

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameParts/BaseGamePiece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameParts/Enemies/Golem.gd" type="Script" id=2]
+
+[node name="Golem" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BaseGamePiece" parent="." instance=ExtResource( 1 )]

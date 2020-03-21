@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GameParts/BaseGamePiece.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Art/test_cone.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Art/FootTocens/token_blank.png" type="Texture" id=3]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -36,7 +37,7 @@ tracks/1/keys = {
 "values": [ 0.0, 5.0, 0.0, -5.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Mover/icon:position")
+tracks/2/path = NodePath("Mover/Body:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -45,7 +46,19 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 2, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -25 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Mover/Camera2D:smoothing_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, -2, -0.5 ),
+"update": 0,
+"values": [ 2.0, 6.0, 2.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -76,7 +89,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Mover/icon:position")
+tracks/2/path = NodePath("Mover/Body:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -97,14 +110,22 @@ position = Vector2( 0.632294, 0.670059 )
 rotate = false
 loop = false
 
-[node name="icon" type="Sprite" parent="Mover"]
+[node name="Body" type="Sprite" parent="Mover"]
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -200 )
+
+[node name="Token" type="Sprite" parent="Mover/Body"]
+show_behind_parent = true
+texture = ExtResource( 3 )
+offset = Vector2( 0, -180 )
 
 [node name="Camera2D" type="Camera2D" parent="Mover"]
-current = true
+zoom = Vector2( 0.32, 0.32 )
 smoothing_enabled = true
+smoothing_speed = 4.0
 
 [node name="AniamteJump" type="AnimationPlayer" parent="."]
-playback_speed = 2.6
+playback_speed = 2.4
 anims/Slow = SubResource( 2 )
 anims/Stop = SubResource( 3 )

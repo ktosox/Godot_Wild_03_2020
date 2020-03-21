@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="SpikeTrap" type="Node2D"]

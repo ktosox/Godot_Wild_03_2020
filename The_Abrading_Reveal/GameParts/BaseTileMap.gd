@@ -13,19 +13,41 @@ var pillarScene = preload("res://GameParts/Junk/Pillar.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	load_level()
 	pass # Replace with function body.
 
 func load_level():
-	#scan tiles and replace every special tile 
+	var allTiles = get_used_cells()
+	for i in allTiles.size():
+#		print(get_cellv(allTiles[i]))
+		match get_cellv(allTiles[i]):
+			5:
+				place_pillar(allTiles[i])
+			9:
+				place_barrel(allTiles[i])
+			10:
+				place_crate(allTiles[i])
 	pass
 
-func replace_tile(tile,mapPos:Vector2):
-	match tile: # match tile IDs with objects
-		4:
-			pass
+func place_barrel(where):
+
+	var newBarrel = barrelScene.instance()
+	newBarrel.global_position = map_to_world(where)
+	add_child(newBarrel)
 	pass
 
+func place_crate(where):
 
+	var newCrate = crateScene.instance()
+	newCrate.global_position = map_to_world(where)
+	add_child(newCrate)
+	pass
+
+func place_pillar(where):
+
+	var newThing= pillarScene.instance()
+	newThing.global_position = map_to_world(where)
+	add_child(newThing)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

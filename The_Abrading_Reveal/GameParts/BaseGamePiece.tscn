@@ -111,17 +111,17 @@ rotate = false
 loop = false
 
 [node name="Body" type="Sprite" parent="Mover"]
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -200 )
+offset = Vector2( 0, -160 )
 
 [node name="Token" type="Sprite" parent="Mover/Body"]
 show_behind_parent = true
 texture = ExtResource( 3 )
-offset = Vector2( 0, -180 )
+offset = Vector2( 0, -120 )
 
 [node name="Camera2D" type="Camera2D" parent="Mover"]
-zoom = Vector2( 0.32, 0.32 )
+zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 smoothing_speed = 4.0
 

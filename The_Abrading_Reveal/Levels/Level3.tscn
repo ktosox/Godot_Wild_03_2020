@@ -12,6 +12,6 @@ script = ExtResource( 1 )
 position = Vector2( -2.15857, -2.15845 )
 
 [node name="BaseTileMap" parent="Navigation" instance=ExtResource( 3 )]
-tile_data = PoolIntArray( -5, 2, 65537, -4, 2, 0, 65531, 2, 65537, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 131067, 2, 65537, 196603, 2, 65537, 196604, 2, 0, 262141, 2, 0, 327686, 2, 0 )
+tile_data = PoolIntArray( -5, 2, 65537, -4, 2, 0, 65531, 2, 65537, 131067, 2, 65537, 196603, 2, 65537, 196604, 2, 0, 262141, 2, 0, 327686, 2, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]

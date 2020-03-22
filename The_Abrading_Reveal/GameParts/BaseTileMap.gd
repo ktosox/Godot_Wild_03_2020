@@ -10,7 +10,7 @@ var door2Scene = preload("res://GameParts/Junk/Door2.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var listOfDoors = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,14 +41,17 @@ func place_door1(where):
 	var newThing= door1Scene.instance()
 	newThing.global_position = map_to_world(where)
 	add_child(newThing)
-	set_cellv(where,8)
+	listOfDoors[where]=newThing
+#	set_cellv(where,8)
+
 	pass
 	
 func place_door2(where):
 	var newThing= door2Scene.instance()
 	newThing.global_position = map_to_world(where)
 	add_child(newThing)
-	set_cellv(where,8)
+	listOfDoors[where]=newThing
+#	set_cellv(where,8)
 	pass
 func place_barrel(where):
 
@@ -72,6 +75,11 @@ func place_pillar(where):
 	newThing.global_position = map_to_world(where)
 	add_child(newThing)
 	set_cellv(where,8)
+
+func open_door(where):
+	listOfDoors[where].open()
+	set_cellv(where,8)
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

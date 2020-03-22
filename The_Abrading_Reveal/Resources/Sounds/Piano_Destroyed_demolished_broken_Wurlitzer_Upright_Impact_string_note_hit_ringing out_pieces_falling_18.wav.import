@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Piano_Destroyed_demolished_broken_Wurlitzer_Upright_Impact_string_note_hit_ringing out_pieces_falling_18.wav-ada80d365e39c5b0fb71c9ab387c7b5d.sample"
+
+[deps]
+
+source_file="res://Resources/Sounds/Piano_Destroyed_demolished_broken_Wurlitzer_Upright_Impact_string_note_hit_ringing out_pieces_falling_18.wav"
+dest_files=[ "res://.import/Piano_Destroyed_demolished_broken_Wurlitzer_Upright_Impact_string_note_hit_ringing out_pieces_falling_18.wav-ada80d365e39c5b0fb71c9ab387c7b5d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -81,19 +81,29 @@ func change_speed(newSpeed:float):
 	
 	pass
 
+
+func set_actor(newActor):
+	match newActor:
+		0:
+			pass #golem
+		1:
+			pass # slime
+		2:
+			pass # player
+	pass
+
 func change_sprite(type:int): 
 	#change Body-s texture to the selected spritesheet
-	# 0 - golem / 1- slime / 2-player
+	# 0 - golem / 1- slime / 2-player with sword / 3-player with spear
 	match type:
 		0:
 			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/golem.png")
-
 		1:
-
 			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/slime.png")
 		2:
-			pass
-
+			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/player_sword.png")
+		3:
+			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/player_spear.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

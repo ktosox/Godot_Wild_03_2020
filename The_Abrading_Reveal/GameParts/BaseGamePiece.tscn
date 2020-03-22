@@ -167,12 +167,22 @@ smoothing_speed = 4.0
 
 [node name="AttackNarrow" type="Area2D" parent="Mover"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/AttackNarrow"]
-position = Vector2( -38.9352, 16.1275 )
+[node name="Cross" type="CollisionShape2D" parent="Mover/AttackNarrow"]
+position = Vector2( -32.818, 12.6611 )
 rotation = 0.998488
 shape = SubResource( 4 )
 
+[node name="UpDown" type="CollisionShape2D" parent="Mover/AttackNarrow"]
+position = Vector2( 0, 22.041 )
+shape = SubResource( 4 )
+
+[node name="LeftRight" type="CollisionShape2D" parent="Mover/AttackNarrow"]
+position = Vector2( 26.723, 0 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
 [node name="AttackWide" type="Area2D" parent="Mover"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/AttackWide"]
 position = Vector2( -32.9085, 18.2573 )

@@ -41,18 +41,21 @@ func place_door1(where):
 	var newThing= door1Scene.instance()
 	newThing.global_position = map_to_world(where)
 	add_child(newThing)
+	set_cellv(where,8)
 	pass
 	
 func place_door2(where):
 	var newThing= door2Scene.instance()
 	newThing.global_position = map_to_world(where)
 	add_child(newThing)
+	set_cellv(where,8)
 	pass
 func place_barrel(where):
 
 	var newBarrel = barrelScene.instance()
 	newBarrel.global_position = map_to_world(where)
 	add_child(newBarrel)
+	set_cellv(where,8)
 	pass
 
 func place_crate(where):
@@ -60,6 +63,7 @@ func place_crate(where):
 	var newCrate = crateScene.instance()
 	newCrate.global_position = map_to_world(where)
 	add_child(newCrate)
+	set_cellv(where,8)
 	pass
 
 func place_pillar(where):
@@ -67,6 +71,7 @@ func place_pillar(where):
 	var newThing= pillarScene.instance()
 	newThing.global_position = map_to_world(where)
 	add_child(newThing)
+	set_cellv(where,8)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

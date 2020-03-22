@@ -8,6 +8,7 @@ export var speed = 100
 var moving = false
 var blockInput = false
 
+var dierction = Vector2(1,1)
 	# 1 for player / 
 
 # Called when the node enters the scene tree for the first time.
@@ -52,11 +53,14 @@ func change_speed(newSpeed:float):
 
 func change_sprite(type:int): 
 	#change Body-s texture to the selected spritesheet
+	# 0 - golem / 1- slime / 2-player
 	match type:
 		0:
-			pass
+			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/golem.png")
+
 		1:
-			pass
+
+			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/slime.png")
 		2:
 			pass
 

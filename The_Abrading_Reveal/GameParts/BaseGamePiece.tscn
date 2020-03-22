@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GameParts/BaseGamePiece.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Art/test_cone.png" type="Texture" id=2]
+[ext_resource path="res://Resources/ActorSpriteSheets/slime.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Art/FootTocens/token_blank.png" type="Texture" id=3]
 
 [sub_resource type="Curve2D" id=1]
@@ -9,8 +9,34 @@ _data = {
 "points": PoolVector2Array(  )
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Slow"
+[sub_resource type="Animation" id=5]
+resource_name = "New Anim"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 2 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 26.7567
+height = 30.6184
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 19.9486
+height = 50.4534
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 33.3117
+
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Mover:v_offset")
@@ -61,8 +87,7 @@ tracks/3/keys = {
 "values": [ 2.0, 6.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Stop"
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Mover:rotation_degrees")
@@ -106,26 +131,50 @@ curve = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Mover" type="PathFollow2D" parent="."]
-position = Vector2( 0.632294, 0.670059 )
 rotate = false
 loop = false
 
 [node name="Body" type="Sprite" parent="Mover"]
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -160 )
+vframes = 3
+hframes = 4
 
 [node name="Token" type="Sprite" parent="Mover/Body"]
 show_behind_parent = true
 texture = ExtResource( 3 )
 offset = Vector2( 0, -120 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mover/Body"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 5 )
+
+[node name="BodyHitBox" type="Area2D" parent="Mover"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/BodyHitBox"]
+rotation = 1.5708
+shape = SubResource( 2 )
+
 [node name="Camera2D" type="Camera2D" parent="Mover"]
 zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 smoothing_speed = 4.0
 
+[node name="AttackNarrow" type="Area2D" parent="Mover"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/AttackNarrow"]
+position = Vector2( -38.9352, 16.1275 )
+rotation = 0.998488
+shape = SubResource( 6 )
+
+[node name="AttackWide" type="Area2D" parent="Mover"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/AttackWide"]
+position = Vector2( -32.9085, 18.2573 )
+shape = SubResource( 7 )
+
 [node name="AniamteJump" type="AnimationPlayer" parent="."]
 playback_speed = 2.4
-anims/Slow = SubResource( 2 )
-anims/Stop = SubResource( 3 )
+anims/Slow = SubResource( 3 )
+anims/Stop = SubResource( 4 )

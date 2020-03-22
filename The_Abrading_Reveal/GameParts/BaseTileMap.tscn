@@ -5,7 +5,6 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
-dof_blur_near_enabled = true
 dof_blur_near_distance = 20.0
 dof_blur_near_transition = 21.9
 dof_blur_near_amount = 0.11

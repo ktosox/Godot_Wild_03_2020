@@ -11,7 +11,6 @@ _data = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "New Anim"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
@@ -150,7 +149,6 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -120 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Mover/Body"]
-autoplay = "New Anim"
 "anims/New Anim" = SubResource( 2 )
 
 [node name="BodyHitBox" type="Area2D" parent="Mover"]

@@ -44,6 +44,25 @@ func check_for_turn():
 func update_direction(newDir):
 	print(newDir)
 	direction = newDir
+	var sheet = 0
+	match newDir:
+		Vector2(0,1):
+			sheet = 0
+		Vector2(-1,1):
+			sheet = 1
+		Vector2(-1,0):
+			sheet = 2
+		Vector2(-1,-1):
+			sheet = 3
+		Vector2(0,-1):
+			sheet = 4
+		Vector2(1,-1):
+			sheet = 5
+		Vector2(1,0):
+			sheet = 6
+		Vector2(1,1):
+			sheet = 7
+	$Mover/Body.frame_coords.x = sheet
 	pass
 
 func move(path):

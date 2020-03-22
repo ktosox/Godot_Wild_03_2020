@@ -37,7 +37,7 @@ func check_for_turn():
 		newDir.y = sign(newDir.y)
 #	print(newDir)
 	lastPos = $Mover.global_position
-	if(newDir != direction):
+	if(newDir != direction and !blockRotation):
 		update_direction(newDir)
 	pass
 
@@ -127,4 +127,21 @@ func change_sprite(type:int):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func attack_wide():
+	if(!attackReady):
+		return
+	attackReady = false
+	$TimerAttackCooldown.start(get_parent().attackCD)
+	pass
 
+func attack_narrow():
+	if(!attackReady):
+		return
+	attackReady = false
+	$TimerAttackCooldown.start(get_parent().attackCD)
+	pass
+
+
+func _on_TimerAttackCooldown_timeout():
+	attackReady = true
+	pass # Replace with function body.

@@ -7,15 +7,44 @@ extends Path2D
 export var speed = 100
 var moving = false
 var blockInput = false
+var blockRotation = false
 
-var dierction = Vector2(1,1)
+var lastPos = Vector2(0,0)
+var direction = Vector2(1,1)
 	# 1 for player / 
-
+var attackReady = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	lastPos = $Mover.global_position
 	
 	pass # Replace with function body.
 
+func check_for_turn():
+#	if($Mover.global_position == lastPos):
+#		pass
+
+	var newDir = lastPos - $Mover.global_position
+	
+	newDir = newDir.clamped(1)
+	
+	if(abs(newDir.x)<0.5):
+		newDir.x = 0
+	else:
+		newDir.x = sign(newDir.x)
+	if(abs(newDir.y)<0.5):
+		newDir.y = 0
+	else:
+		newDir.y = sign(newDir.y)
+#	print(newDir)
+	lastPos = $Mover.global_position
+	if(newDir != direction):
+		update_direction(newDir)
+	pass
+
+func update_direction(newDir):
+	print(newDir)
+	direction = newDir
+	pass
 
 func move(path):
 	if(blockInput):
@@ -36,6 +65,7 @@ func setCamera():
 
 func _physics_process(delta):
 	if(moving):
+		check_for_turn()
 		if(!$AniamteJump.is_playing()):
 			$AniamteJump.play("Slow")
 		$Mover.offset += delta * speed
@@ -63,6 +93,7 @@ func change_sprite(type:int):
 			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/slime.png")
 		2:
 			pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GameParts/BaseGamePiece.gd" type="Script" id=1]
 [ext_resource path="res://Resources/ActorSpriteSheets/slime.png" type="Texture" id=2]
@@ -9,7 +9,7 @@ _data = {
 "points": PoolVector2Array(  )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "New Anim"
 loop = true
 tracks/0/type = "value"
@@ -25,18 +25,18 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 2 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 26.7567
 height = 30.6184
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 19.9486
 height = 50.4534
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=5]
 radius = 33.3117
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Mover:v_offset")
@@ -87,7 +87,7 @@ tracks/3/keys = {
 "values": [ 2.0, 6.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Mover:rotation_degrees")
@@ -126,6 +126,9 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "AttackWide"
+
 [node name="BaseGamePiece" type="Path2D"]
 curve = SubResource( 1 )
 script = ExtResource( 1 )
@@ -148,16 +151,17 @@ offset = Vector2( 0, -120 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Mover/Body"]
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 5 )
+"anims/New Anim" = SubResource( 2 )
 
 [node name="BodyHitBox" type="Area2D" parent="Mover"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/BodyHitBox"]
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="Mover"]
 zoom = Vector2( 0.5, 0.5 )
+process_mode = 0
 smoothing_enabled = true
 smoothing_speed = 4.0
 
@@ -166,15 +170,18 @@ smoothing_speed = 4.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/AttackNarrow"]
 position = Vector2( -38.9352, 16.1275 )
 rotation = 0.998488
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="AttackWide" type="Area2D" parent="Mover"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/AttackWide"]
 position = Vector2( -32.9085, 18.2573 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="AniamteJump" type="AnimationPlayer" parent="."]
 playback_speed = 2.4
-anims/Slow = SubResource( 3 )
-anims/Stop = SubResource( 4 )
+anims/Slow = SubResource( 6 )
+anims/Stop = SubResource( 7 )
+
+[node name="AnimateAttack" type="AnimationPlayer" parent="."]
+anims/AttackWide = SubResource( 8 )

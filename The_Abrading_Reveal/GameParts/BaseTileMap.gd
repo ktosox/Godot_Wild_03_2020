@@ -36,6 +36,7 @@ func load_level():
 				place_crate(allTiles[i])
 	pass
 
+
 func place_door1(where):
 	var newThing= door1Scene.instance()
 	newThing.global_position = map_to_world(where)

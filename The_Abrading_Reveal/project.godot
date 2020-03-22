@@ -27,6 +27,8 @@ GM="*res://GameManager.tscn"
 
 window/size/width=1280
 window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
 
 [input]
 
@@ -35,6 +37,13 @@ LMB={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="DO NOT USE"
+2d_physics/layer_2="Actor"
+2d_physics/layer_3="Player"
+2d_physics/layer_4="Attack"
 
 [rendering]
 

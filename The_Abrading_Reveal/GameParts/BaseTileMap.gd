@@ -4,7 +4,8 @@ var crateScene = preload("res://GameParts/Junk/Crate.tscn")
 var barrelScene = preload("res://GameParts/Junk/Barrel.tscn")
 var trap1Scene = preload("res://GameParts/Traps/SpikeTrap.tscn")
 var pillarScene = preload("res://GameParts/Junk/Pillar.tscn")
-
+var door1Scene = preload("res://GameParts/Junk/Door1.tscn")
+var door2Scene = preload("res://GameParts/Junk/Door2.tscn")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -21,6 +22,12 @@ func load_level():
 	for i in allTiles.size():
 #		print(get_cellv(allTiles[i]))
 		match get_cellv(allTiles[i]):
+			
+			3:
+				place_door1(allTiles[i])
+			4:
+				place_door2(allTiles[i])
+				
 			5:
 				place_pillar(allTiles[i])
 			9:
@@ -29,6 +36,17 @@ func load_level():
 				place_crate(allTiles[i])
 	pass
 
+func place_door1(where):
+	var newThing= door1Scene.instance()
+	newThing.global_position = map_to_world(where)
+	add_child(newThing)
+	pass
+	
+func place_door2(where):
+	var newThing= door2Scene.instance()
+	newThing.global_position = map_to_world(where)
+	add_child(newThing)
+	pass
 func place_barrel(where):
 
 	var newBarrel = barrelScene.instance()

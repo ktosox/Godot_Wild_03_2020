@@ -57,9 +57,10 @@ func change_sprite(type:int):
 	match type:
 		0:
 			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/golem.png")
-			pass
+
 		1:
-			pass
+
+			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/slime.png")
 		2:
 			pass
 

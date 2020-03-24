@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://GameParts/BaseGamePiece.gd" type="Script" id=1]
 [ext_resource path="res://Resources/ActorSpriteSheets/player_sword.png" type="Texture" id=2]
@@ -29,8 +29,8 @@ radius = 26.7567
 height = 30.6184
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 13.505
-height = 67.679
+radius = 10.116
+height = 70.364
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 26.0
@@ -71,7 +71,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 2, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Mover/Camera2D:smoothing_speed")
@@ -121,14 +121,65 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 2 ),
-"update": 3,
+"update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
-resource_name = "AttackWide"
+resource_name = "AttackNarrow"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_narrow"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_wide"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "ResetAttack"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_end"
+} ]
+}
 
 [node name="BaseGamePiece" type="Path2D"]
+z_as_relative = false
 curve = SubResource( 1 )
 script = ExtResource( 1 )
 
@@ -137,7 +188,7 @@ rotate = false
 loop = false
 
 [node name="Body" type="Sprite" parent="Mover"]
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -160 )
 vframes = 3
@@ -157,16 +208,19 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/BodyHitBox"]
 rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="Mover"]
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.25, 0.25 )
 process_mode = 0
 smoothing_enabled = true
 smoothing_speed = 4.0
 
 [node name="AttackNarrow" type="Area2D" parent="Mover"]
 visible = false
+collision_layer = 8
+collision_mask = 2
 
 [node name="N" type="CollisionShape2D" parent="Mover/AttackNarrow"]
 position = Vector2( 0, -25 )
@@ -216,6 +270,8 @@ disabled = true
 
 [node name="AttackWide" type="Area2D" parent="Mover"]
 visible = false
+collision_layer = 8
+collision_mask = 2
 
 [node name="N" type="CollisionShape2D" parent="Mover/AttackWide"]
 position = Vector2( 0, -25 )
@@ -263,7 +319,9 @@ anims/Slow = SubResource( 6 )
 anims/Stop = SubResource( 7 )
 
 [node name="AnimateAttack" type="AnimationPlayer" parent="."]
-anims/AttackWide = SubResource( 8 )
+anims/AttackNarrow = SubResource( 8 )
+anims/AttackWide = SubResource( 9 )
+anims/ResetAttack = SubResource( 10 )
 
 [node name="TimerAttackCooldown" type="Timer" parent="."]
 wait_time = 4.0

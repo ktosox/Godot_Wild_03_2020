@@ -4,6 +4,7 @@
 
 [node name="Pillar" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
+z_as_relative = false
 
 [node name="Body" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )

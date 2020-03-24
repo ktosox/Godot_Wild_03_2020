@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://GameParts/Junk/Barrel.gd" type="Script" id=1]
+[ext_resource path="res://GameParts/Junk/HitBox.gd" type="Script" id=1]
 [ext_resource path="res://Resources/JunkSpriteSheets/Barrel.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -10,37 +10,13 @@ height = 22.5165
 [sub_resource type="Animation" id=2]
 resource_name = "New Anim"
 length = 1.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:frame")
+tracks/0/type = "method"
+tracks/0/path = NodePath("..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 3 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 1.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -48,12 +24,36 @@ tracks/2/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 3 ]
+}
 
 [node name="Barrel" type="Node2D" groups=[
 "Actor",
 ]]
 scale = Vector2( 0.5, 0.5 )
-script = ExtResource( 1 )
+z_as_relative = false
 
 [node name="Body" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
@@ -62,12 +62,15 @@ offset = Vector2( 0, 90 )
 hframes = 4
 
 [node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 0, 40.9089 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="Die" type="AnimationPlayer" parent="."]
+[node name="Die" type="AnimationPlayer" parent="HitBox"]
 playback_speed = 2.0
 "anims/New Anim" = SubResource( 2 )

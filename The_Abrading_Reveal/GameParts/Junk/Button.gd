@@ -22,5 +22,5 @@ func _on_Area2D_area_entered(area):
 	if(active):
 		active = false
 		$Press.play("New Anim")
-		get_parent().open_door(TARGET)
+		get_parent().get_parent().open_door(TARGET)
 	pass # Replace with function body.

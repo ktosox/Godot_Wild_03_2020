@@ -88,6 +88,9 @@ func _physics_process(delta):
 		if(!$AniamteJump.is_playing()):
 			$AniamteJump.play("Slow")
 		$Mover.offset += delta * speed
+		#print(get_parent().get_parent().get_cell($Mover.global_position))
+		var gridcell  = get_parent().get_parent().get_cell($Mover.global_position)
+		z_index = gridcell.x+gridcell.y
 		if($Mover.unit_offset>=1):
 			moving = false
 			$AniamteJump.play("Stop")
@@ -128,20 +131,95 @@ func change_sprite(type:int):
 #func _process(delta):
 #	pass
 func attack_wide():
-	if(!attackReady):
-		return
-	attackReady = false
+	$Mover/Body.frame_coords.y = 2
+
+
+	var targets = $Mover/AttackWide.get_overlapping_areas()
+	for i in targets.size():
+		 targets[i].land_hit(get_parent().attackDMG,0)
+
 	$TimerAttackCooldown.start(get_parent().attackCD)
-	pass
+	$AnimateAttack.play("ResetAttack")
+	$Mover/AttackWide/N.disabled = true
+	$Mover/AttackWide/NE.disabled = true
+	$Mover/AttackWide/E.disabled = true
+	$Mover/AttackWide/SE.disabled = true
+	$Mover/AttackWide/S.disabled = true
+	$Mover/AttackWide/SW.disabled = true
+	$Mover/AttackWide/W.disabled = true
+	$Mover/AttackWide/NW.disabled = true
+
 
 func attack_narrow():
+	$Mover/Body.frame_coords.y = 2
+
+
+	var targets = $Mover/AttackNarrow.get_overlapping_areas()
+
+	for i in targets.size():
+		 targets[i].land_hit(get_parent().attackDMG,0)
+	$Mover/AttackNarrow/N.disabled = true
+	$Mover/AttackNarrow/NE.disabled = true
+	$Mover/AttackNarrow/E.disabled = true
+	$Mover/AttackNarrow/SE.disabled = true
+	$Mover/AttackNarrow/S.disabled = true
+	$Mover/AttackNarrow/SW.disabled = true
+	$Mover/AttackNarrow/W.disabled = true
+	$Mover/AttackNarrow/NW.disabled = true
+	$TimerAttackCooldown.start(get_parent().attackCD)
+	$AnimateAttack.play("ResetAttack")
+
+func attack_start(type): # 0 for narrow / 1 for wide
 	if(!attackReady):
 		return
 	attackReady = false
-	$TimerAttackCooldown.start(get_parent().attackCD)
+	blockRotation = true
+	$Mover/Body.frame_coords.y = 1
+	match(type):
+		0:
+			match int($Mover/Body.frame_coords.x): # enable the correct colision object
+				0:
+					$Mover/AttackNarrow/N.disabled = false
+				1:
+					$Mover/AttackNarrow/NE.disabled = false
+				2:
+					$Mover/AttackNarrow/E.disabled = false
+				3:
+					$Mover/AttackNarrow/SE.disabled = false
+				4:
+					$Mover/AttackNarrow/S.disabled = false
+				5:
+					$Mover/AttackNarrow/SW.disabled = false
+				6:
+					$Mover/AttackNarrow/W.disabled = false
+				7:
+					$Mover/AttackNarrow/NW.disabled = false
+			$AnimateAttack.play("AttackNarrow")
+		1:
+			match int($Mover/Body.frame_coords.x): # enable the correct colision object
+				0:
+					$Mover/AttackWide/N.disabled = false
+				1:
+					$Mover/AttackWide/NE.disabled = false
+				2:
+					$Mover/AttackWide/E.disabled = false
+				3:
+					$Mover/AttackWide/SE.disabled = false
+				4:
+					$Mover/AttackWide/S.disabled = false
+				5:
+					$Mover/AttackWide/SW.disabled = false
+				6:
+					$Mover/AttackWide/W.disabled = false
+				7:
+					$Mover/AttackWide/NW.disabled = false
+			$AnimateAttack.play("AttackWide")
+
+func attack_end():
+	$Mover/Body.frame_coords.y = 0
+	blockRotation = false
+
 	pass
-
-
 func _on_TimerAttackCooldown_timeout():
 	attackReady = true
 	pass # Replace with function body.

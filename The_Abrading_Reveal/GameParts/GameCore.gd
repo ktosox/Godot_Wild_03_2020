@@ -11,8 +11,8 @@ func _ready():
 	pass # Replace with function body.
 	
 func _unhandled_input(event):
-#	if(event.is_action_pressed("ui_up")):
-#		$Player.fall_down()
+	if(event.is_action_pressed("ui_up")):
+		$Player.attack()
 	if(event.is_action_pressed("LMB")):
 		update_player_move()
 #	if(event.is_action_pressed("RMB")):
@@ -25,6 +25,8 @@ func update_player_move():
 	$Player.move(path)
 	playerIsMoving = 0.4
 
+func get_cell(glob_pos):
+	return $Navigation/BaseTileMap.world_to_map(glob_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

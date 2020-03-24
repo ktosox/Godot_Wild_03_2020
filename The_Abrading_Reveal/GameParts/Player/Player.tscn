@@ -9,7 +9,9 @@ _data = {
 "points": PoolVector2Array(  )
 }
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CanvasLayer"]
+layer = 2
+follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="icon" type="Sprite" parent="."]

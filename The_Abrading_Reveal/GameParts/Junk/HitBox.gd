@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -12,7 +12,6 @@ func _ready():
 
 func land_hit(base_dmg, AR=0): 
 	$Die.play("New Anim")
-	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

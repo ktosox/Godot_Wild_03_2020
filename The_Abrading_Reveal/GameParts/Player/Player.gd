@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 
 
@@ -26,10 +26,16 @@ func move(path):
 func get_current_poistion():
 	return $BaseGamePiece/Mover.global_position
 	
-
+func attack():
+	$BaseGamePiece.attack_start(1)
+	pass
 #func _on_Timer_Cloud_Refill_timeout():
 #	$Interface/Overlay/Energy_Bar.value +=1
-
+#func _input(event):
+#	if(event.is_action_pressed("ui_up")):
+#		z_index+=1
+#	if(event.is_action_pressed("ui_down")):
+#		z_index-=1
 #func fall_down():
 #	resetInventory()
 #	blockInput = true

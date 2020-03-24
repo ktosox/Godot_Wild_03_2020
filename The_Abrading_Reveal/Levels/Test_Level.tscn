@@ -1,16 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GameParts/Navigation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameParts/GameCore.gd" type="Script" id=2]
 [ext_resource path="res://GameParts/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GameParts/BaseTileMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://GameParts/Junk/Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameParts/Player/Player.gd" type="Script" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array(  )
+}
 
 [node name="GameCore" type="Node2D"]
 script = ExtResource( 2 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
 
 [node name="Navigation" parent="." instance=ExtResource( 1 )]
 
@@ -18,19 +21,17 @@ script = ExtResource( 2 )
 cell_tile_origin = 1
 tile_data = PoolIntArray( -393210, 2, 0, -393209, 2, 0, -131070, 10, 0, -131069, 5, 0, -131065, 10, 0, -5, 2, 65537, -4, 2, 0, -1, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 0, -65529, 8, 0, -65528, 8, 0, 65531, 2, 65537, 65534, 10, 0, 65535, 8, 0, 0, 8, 0, 1, 8, 0, 3, 8, 0, 4, 8, 0, 5, 3, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 131067, 2, 65537, 131070, 9, 0, 131071, 8, 0, 65536, 8, 0, 65537, 8, 65537, 65538, 8, 65537, 65539, 8, 65537, 65540, 8, 65537, 65543, 9, 0, 65544, 8, 0, 65546, 2, 0, 196603, 2, 65537, 196604, 2, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 1, 131076, 8, 65537, 131079, 8, 0, 131080, 8, 0, 131081, 2, 0, 131082, 2, 0, 262141, 2, 0, 196608, 9, 0, 196609, 7, 0, 196610, 9, 0, 196611, 8, 1, 196612, 8, 1, 196613, 8, 1, 196615, 8, 0, 196616, 8, 1, 196617, 2, 0, 327678, 8, 0, 327679, 8, 0, 262149, 8, 1, 262150, 8, 1, 262151, 8, 1, 262152, 8, 1, 393215, 8, 0, 327680, 8, 0, 327681, 8, 0, 327682, 8, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 1, 327688, 8, 1, 458751, 10, 0, 393217, 10, 0, 393219, 10, 0 )
 
-[node name="Button" parent="Navigation/BaseTileMap/JunkLayer" index="0" instance=ExtResource( 6 )]
-position = Vector2( 95.8629, 118.406 )
-TARGET = Vector2( 5, 0 )
+[node name="Player" type="Node2D" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 6 )
 
-[node name="icon" type="Sprite" parent="Navigation/BaseTileMap/JunkLayer" index="1"]
-position = Vector2( -24.6912, 12.7971 )
-z_index = 100
+[node name="icon" type="Sprite" parent="Player" index="0"]
+modulate = Color( 0.482353, 0.968627, 0.176471, 1 )
+position = Vector2( -0.894073, 2.54768 )
 texture = ExtResource( 5 )
 
-[node name="icon2" type="Sprite" parent="Navigation/BaseTileMap/JunkLayer" index="2"]
-position = Vector2( 7.6963, 8.6933 )
-z_index = -100
-z_as_relative = false
-texture = ExtResource( 5 )
+[node name="BaseGamePiece" parent="Player" index="1"]
+curve = SubResource( 1 )
 
 [editable path="Navigation/BaseTileMap"]
+
+[editable path="Player"]

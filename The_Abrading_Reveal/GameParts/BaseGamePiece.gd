@@ -8,7 +8,7 @@ export var speed = 100
 var moving = false
 var blockInput = false
 var blockRotation = false
-
+var updateTurn = 0.1
 var lastPos = Vector2(0,0)
 var direction = Vector2(1,1)
 	# 1 for player / 
@@ -84,7 +84,10 @@ func setCamera():
 
 func _physics_process(delta):
 	if(moving):
-		check_for_turn()
+		updateTurn-=delta
+		if(updateTurn<0):
+			updateTurn=0.06
+			check_for_turn()
 		if(!$AniamteJump.is_playing()):
 			$AniamteJump.play("Slow")
 		$Mover.offset += delta * speed

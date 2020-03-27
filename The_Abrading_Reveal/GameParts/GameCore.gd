@@ -1,6 +1,8 @@
 extends Node2D
 
 
+var GAMEOVER = preload("res://GameParts/GAMEOVER.tscn")
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

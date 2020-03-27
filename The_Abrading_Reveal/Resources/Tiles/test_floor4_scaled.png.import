@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/orb2.png-e70de5c72b56bf0433d9b4b4ebad58b9.stex"
+path="res://.import/test_floor4_scaled.png-e91c5ae73cd24543c90ecd139a6573f6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/JunkSpriteSheets/orb2.png"
-dest_files=[ "res://.import/orb2.png-e70de5c72b56bf0433d9b4b4ebad58b9.stex" ]
+source_file="res://Resources/Tiles/test_floor4_scaled.png"
+dest_files=[ "res://.import/test_floor4_scaled.png-e91c5ae73cd24543c90ecd139a6573f6.stex" ]
 
 [params]
 

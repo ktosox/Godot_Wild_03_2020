@@ -15,6 +15,7 @@ var defenceRED = 0 # base damange reduction
 func _ready():
 	GM.currentPlayer = self
 	$BaseGamePiece.setCamera()
+	$BaseGamePiece.change_sprite(2)
 	#GM.currentCamera = $Path2D/PathFollow2D/Camera2D
 	pass # Replace with function body.
 

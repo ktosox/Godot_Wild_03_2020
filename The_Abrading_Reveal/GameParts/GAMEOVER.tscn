@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameParts/GAMEOVER.gd" type="Script" id=1]
+
+[node name="GAMEOVER" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1280, 720 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 390.0
+margin_right = 890.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+size_flags_horizontal = 4
+color = Color( 0, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -400.0
+margin_bottom = -400.0
+rect_scale = Vector2( 5, 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer"]
+margin_left = 12.0
+margin_top = 43.0
+margin_right = 88.0
+margin_bottom = 57.0
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="ColorRect"]
+margin_left = 174.8
+margin_top = 349.6
+margin_right = 337.8
+margin_bottom = 417.6
+text = "RESTART"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_Button_pressed"]

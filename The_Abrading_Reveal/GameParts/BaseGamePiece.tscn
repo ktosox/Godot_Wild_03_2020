@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://GameParts/BaseGamePiece.gd" type="Script" id=1]
-[ext_resource path="res://Resources/ActorSpriteSheets/player_spear.png" type="Texture" id=2]
+[ext_resource path="res://Resources/ActorSpriteSheets/slime.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Art/FootTocens/token_blank.png" type="Texture" id=3]
 
 [sub_resource type="Curve2D" id=1]
@@ -25,17 +25,23 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 26.7567
-height = 30.6184
+radius = 25.526
+height = 25.996
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 10.116
-height = 70.364
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 26.0
+radius = 12.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 17.8618
+height = 16.0646
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 182.57
+
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Mover:v_offset")
@@ -86,7 +92,7 @@ tracks/3/keys = {
 "values": [ 2.0, 6.0, 2.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Mover:rotation_degrees")
@@ -125,8 +131,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "AttackNarrow"
+[sub_resource type="Animation" id=10]
 length = 0.4
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -143,7 +148,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -160,8 +165,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "ResetAttack"
+[sub_resource type="Animation" id=12]
 length = 0.2
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -190,7 +194,7 @@ loop = false
 [node name="Body" type="Sprite" parent="Mover"]
 scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -160 )
+offset = Vector2( 0, -80 )
 vframes = 3
 hframes = 8
 
@@ -207,6 +211,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/BodyHitBox"]
+position = Vector2( 0, 3.87295 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 3 )
@@ -234,7 +239,7 @@ shape = SubResource( 4 )
 disabled = true
 
 [node name="E" type="CollisionShape2D" parent="Mover/AttackNarrow"]
-position = Vector2( 40, 0 )
+position = Vector2( 34.4465, -0.142395 )
 rotation = 1.5708
 shape = SubResource( 4 )
 disabled = true
@@ -257,7 +262,7 @@ shape = SubResource( 4 )
 disabled = true
 
 [node name="W" type="CollisionShape2D" parent="Mover/AttackNarrow"]
-position = Vector2( -40, 0 )
+position = Vector2( -31.741, -0.427189 )
 rotation = 1.5708
 shape = SubResource( 4 )
 disabled = true
@@ -274,56 +279,77 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="N" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( 0, -25 )
+position = Vector2( 0, -20 )
 shape = SubResource( 5 )
 disabled = true
 
 [node name="NE" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( 32.8828, -17.3857 )
+position = Vector2( 18.0736, -15.8193 )
 shape = SubResource( 5 )
 disabled = true
 
 [node name="E" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( 40, 0 )
+position = Vector2( 25, 0 )
 shape = SubResource( 5 )
 disabled = true
 
 [node name="SE" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( 32.1787, 17.8699 )
+position = Vector2( 16.7999, 14.7372 )
 shape = SubResource( 5 )
 disabled = true
 
 [node name="S" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( 0, 25 )
+position = Vector2( 0, 20 )
 shape = SubResource( 5 )
 disabled = true
 
 [node name="SW" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( -32.9085, 18.2573 )
+position = Vector2( -18.5265, 15.267 )
 shape = SubResource( 5 )
 disabled = true
 
 [node name="W" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( -40, 0 )
+position = Vector2( -25, 0 )
 shape = SubResource( 5 )
 disabled = true
 
 [node name="NW" type="CollisionShape2D" parent="Mover/AttackWide"]
-position = Vector2( -30.4646, -19.5825 )
+position = Vector2( -16.937, -17.0194 )
 shape = SubResource( 5 )
 disabled = true
 
+[node name="HitRange" type="Area2D" parent="Mover"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/HitRange"]
+position = Vector2( 0, 3.55892 )
+rotation = 1.5708
+shape = SubResource( 6 )
+
+[node name="ScanRange" type="Area2D" parent="Mover"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover/ScanRange"]
+shape = SubResource( 7 )
+
 [node name="AniamteJump" type="AnimationPlayer" parent="."]
 playback_speed = 2.4
-anims/Slow = SubResource( 6 )
-anims/Stop = SubResource( 7 )
+anims/Slow = SubResource( 8 )
+anims/Stop = SubResource( 9 )
 
 [node name="AnimateAttack" type="AnimationPlayer" parent="."]
-anims/AttackNarrow = SubResource( 8 )
-anims/AttackWide = SubResource( 9 )
-anims/ResetAttack = SubResource( 10 )
+anims/AttackNarrow = SubResource( 10 )
+anims/AttackWide = SubResource( 11 )
+anims/ResetAttack = SubResource( 12 )
 
 [node name="TimerAttackCooldown" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="TimerScan" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+[connection signal="area_entered" from="Mover/HitRange" to="." method="_on_HitRange_area_entered"]
 [connection signal="timeout" from="TimerAttackCooldown" to="." method="_on_TimerAttackCooldown_timeout"]
+[connection signal="timeout" from="TimerScan" to="." method="_on_TimerScan_timeout"]

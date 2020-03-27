@@ -4,6 +4,7 @@ extends Path2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var AI = 0
 export var speed = 100
 var moving = false
 var blockInput = false
@@ -18,6 +19,9 @@ func _ready():
 	lastPos = $Mover.global_position
 	
 	pass # Replace with function body.
+
+func start_AI():
+	pass
 
 func check_for_turn():
 #	if($Mover.global_position == lastPos):
@@ -82,6 +86,7 @@ func setCamera():
 	GM.currentCamera = $Mover/Camera2D
 	pass
 
+
 func _physics_process(delta):
 	if(moving):
 		updateTurn-=delta
@@ -131,8 +136,7 @@ func change_sprite(type:int):
 			$Mover/Body.texture = load("res://Resources/ActorSpriteSheets/player_spear.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
 func attack_wide():
 	$Mover/Body.frame_coords.y = 2
 
@@ -225,4 +229,14 @@ func attack_end():
 	pass
 func _on_TimerAttackCooldown_timeout():
 	attackReady = true
+	pass # Replace with function body.
+
+
+func _on_TimerScan_timeout():
+	
+	pass # Replace with function body.
+
+
+func _on_HitRange_area_entered(area):
+	attack_start(AI)
 	pass # Replace with function body.
